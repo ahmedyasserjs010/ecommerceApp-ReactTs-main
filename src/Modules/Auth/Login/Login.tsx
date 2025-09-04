@@ -29,7 +29,9 @@ export default function Login() {
             onSuccess: (response) => {
                 toast.success("Login successful! 🎉");
                 localStorage.setItem("token", response.token);
-                localStorage.setItem("user", JSON.stringify(response.user));
+                // localStorage.setItem("user", JSON.stringify(response.user));
+                console.log(response.token);
+                
                 setUserLogin(response.token);
                 navigate("/");
             },
