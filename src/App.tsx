@@ -55,9 +55,9 @@ function App() {
       path: 'admin',
       element:<ProtectedRoutes><AdminLayout /></ProtectedRoutes>,
       children: [
-        // { index: true, element: <ProtectedRoutes><AdminDashboard /></ProtectedRoutes> },
-        // { path: 'dashboard', element: <ProtectedRoutes><AdminDashboard /></ProtectedRoutes> },
         { index: true, element: <ProtectedRoutes><EditMainSlider /></ProtectedRoutes> },
+        // { path: 'dashboard', element: <ProtectedRoutes><AdminDashboard /></ProtectedRoutes> },
+        { path: 'editSlider', element: <ProtectedRoutes><EditMainSlider /></ProtectedRoutes> },
         { path: 'products', element: <ProtectedRoutes><ProductsAdmin /></ProtectedRoutes> },
         { path: 'addOffers', element: <ProtectedRoutes><AddOffers /></ProtectedRoutes> },
         { path: 'housewares', element: <ProtectedRoutes><HousewaresAdmin /></ProtectedRoutes> },

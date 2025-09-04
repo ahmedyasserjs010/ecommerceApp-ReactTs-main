@@ -308,7 +308,7 @@ export default function AdminSidebar({ isOpen, setIsOpen }: AdminSidebarProps) {
           <div className="flex-1 overflow-y-auto">
             {/* Navigation Items */}
             <div className="space-y-1 mb-6">
-              <h3 className={` mb-10 text-2xl font-semibold text-gray-500 dark:text-gray-400 mb-3 px-2 ${!isOpen && 'sr-only'}`}>
+              <h3 className={` text-2xl font-semibold text-gray-500 dark:text-gray-400 mb-3 px-2 ${!isOpen && 'sr-only'}`}>
                 إدارة المتجر
               </h3>
               {adminNavItems.map((item) => (
