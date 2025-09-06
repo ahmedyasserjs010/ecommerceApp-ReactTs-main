@@ -490,9 +490,9 @@ const ProductsAdmin = () => {
                             <div className="w-50">
 
                 <SearchableDropdown
-                  label="اسم القسم المراد عرضه "
-                  placeholder="اختر القسم"
-                  options={All_Sections}
+                  label="اسم الفئة المراد عرضه "
+                  placeholder="اختر الفئة"
+                  options={All_Category}
                   value={selectedSection}
                   setValue={setSelectedSection}
                 />

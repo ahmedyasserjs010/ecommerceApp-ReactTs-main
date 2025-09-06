@@ -18,7 +18,7 @@ export default function HomeMain() {
   return (
     <>
       <HomeMainSlider />
-      <Offers />
+      {/* <Offers /> */}
       <Screens />
       <Kitchen />
       <Dishes />

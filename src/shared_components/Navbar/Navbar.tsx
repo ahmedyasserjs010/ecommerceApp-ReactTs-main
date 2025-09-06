@@ -234,17 +234,13 @@ export default function Navbar() {
   return (
     <nav
       ref={dropdownRef}
-      className="bg-orange-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 shadow-md w-full transition-colors duration-300 relative"
+      className="py-3 bg-orange-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 shadow-md w-full transition-colors duration-300 relative flex-row-reverse"
     >
-      <div className="container mx-auto flex justify-between gap-2 items-center px-4 pt-2">
+      <div className="container mx-auto flex justify-between gap-2 items-center px-4 pt-2 flex-row-reverse pb-2">
         {/* Logo */}
         <Link to="/" className="flex items-center">
           <span className="font-bold dark:text-white flex items-center gap-2">
-            <img src={logo} alt="RIOMax" className="w-35" />
-            {/* <div className="flex">
-              <span className="text-orange-600">RIO</span>
-              <span className="text-gray-500 dark:text-gray-200">Max</span>
-            </div> */}
+            <img src={logo} alt="RIOMax" className="w-45" />
           </span>
         </Link>
 
@@ -254,7 +250,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Right Section */}
-        <div className="hidden lg:flex items-center space-x-4 ">
+        <div className="hidden lg:flex items-center flex-row-reverse gap-2 ">
           {userLogin === null ? (
             <div className="flex gap-1">
               <NavLink
@@ -282,7 +278,7 @@ export default function Navbar() {
               </NavLink>
             </div>
           ) : (
-            <div className="flex space-x-4 text-xl">
+            <div className="flex space-x-4 text-xl ">
               <NavLink
                 to="/cart"
                 className={({ isActive }) =>
@@ -336,18 +332,14 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* //ANCHOR -  */}
       {/* Desktop Menu */}
       {userLogin !== null ? (
-        <div className="hidden lg:flex items-center justify-center relative pb-2">
+        <div className="hidden lg:flex items-center justify-center relative pb-2 flex-row-reverse">
           {navItems.map((item) => (
             <div
               key={item.id || item.path}
               className="relative group"
             >
-
-              {/* //!SECTION */}
-
               {item.type === "link" ? (
                 <NavLink
                   to={item.path}
@@ -390,10 +382,6 @@ export default function Navbar() {
                         }`}
                     />
                   </button>
-
-
-                  {/* //!SECTION */}
-
 
                   {/* Mega Menu */}
                   {item.type === "mega" && activeMegaMenu === item.id && (
@@ -454,8 +442,6 @@ export default function Navbar() {
           ))}
         </div>
       ) : null}
-
-      {/* //ANCHOR -  */}
 
       {/* Mobile Sidebar مع الأوفرلاي بداخله */}
       <div
@@ -554,7 +540,7 @@ export default function Navbar() {
               </div>
             )}
 
-            {/* Navigation Items */}
+            {/* Navigation Items - Enhanced with proper routing */}
             {userLogin !== null && (
               <div className="space-y-1 mb-6">
                 <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-3 px-2">
@@ -577,20 +563,36 @@ export default function Navbar() {
                       </NavLink>
                     ) : (
                       <div>
-                        <button
-                          onClick={() =>
-                            item.type === "mega"
-                              ? handleDropdownToggle(item.id, item.type)
-                              : handleDropdownToggle(item.id, item.type)
-                          }
-                          className="flex items-center justify-between w-full px-4 py-3 text-right text-gray-700 dark:text-gray-300 hover:bg-orange-100 dark:hover:bg-gray-800 hover:text-orange-600 dark:hover:text-orange-400 rounded-lg transition-all duration-200 font-medium"
-                        >
-                          {item.label}
-                          <FaChevronDown
-                            className={`text-sm transition-transform duration-200 ${(activeMegaMenu === item.id || activeDropdown === item.id) ? 'rotate-180' : ''
-                              }`}
-                          />
-                        </button>
+                        {/* Main Category Link with Active State */}
+                        <div className="flex items-center">
+                          <NavLink
+                            to={item.path}
+                            onClick={() => setIsOpen(false)}
+                            className={({ isActive }) =>
+                              `flex-1 px-4 py-3 text-right text-gray-700 dark:text-gray-300 rounded-lg transition-all duration-200 font-medium ${isActive
+                                ? "bg-orange-600 text-white shadow-md"
+                                : "hover:bg-orange-100 dark:hover:bg-gray-800 hover:text-orange-600 dark:hover:text-orange-400"
+                              }`
+                            }
+                          >
+                            {item.label}
+                          </NavLink>
+                          
+                          {/* Dropdown Toggle Button */}
+                          <button
+                            onClick={() =>
+                              item.type === "mega"
+                                ? handleDropdownToggle(item.id, item.type)
+                                : handleDropdownToggle(item.id, item.type)
+                            }
+                            className="px-3 py-3 text-gray-500 dark:text-gray-400 hover:text-orange-600 dark:hover:text-orange-400 transition-colors duration-200"
+                          >
+                            <FaChevronDown
+                              className={`text-sm transition-transform duration-200 ${(activeMegaMenu === item.id || activeDropdown === item.id) ? 'rotate-180' : ''
+                                }`}
+                            />
+                          </button>
+                        </div>
 
                         {/* Sidebar Dropdown/Mega Menu Content */}
                         {(item.type === "mega" && activeMegaMenu === item.id) ||
